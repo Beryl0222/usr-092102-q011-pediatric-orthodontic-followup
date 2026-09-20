@@ -1,0 +1,9 @@
+{
+  "event_id": "092102-011-sample-001",
+  "event_type": "OBSERVATION_RECORDED",
+  "aggregate_type": "growth_episode",
+  "aggregate_id": "pediatric_orthodontic_followup-001",
+  "occurred_at": "2026-09-20T12:00:00+08:00",
+  "version": 1,
+  "summary": "儿童正畸生长随访领域样例"
+}
