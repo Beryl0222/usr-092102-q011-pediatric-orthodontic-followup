@@ -1,0 +1,27 @@
+{
+  "event_id": "evt-sample-plan-observe-001",
+  "event_type": "PLAN_CONFIRMED",
+  "aggregate_type": "care_plan",
+  "aggregate_id": "careplan-ep-sample-001",
+  "occurred_at": "2026-09-20T12:00:00+08:00",
+  "version": 1,
+  "summary": "确认方案：OBSERVE（等待切牙替换后复评反𬌗趋势）",
+  "payload": {
+    "kind": "PLAN_CONFIRMED",
+    "episode_id": "ep-sample-001",
+    "plan_id": "plan-sample-observe",
+    "decision": "OBSERVE",
+    "appliance": null,
+    "rationale": "乳牙列期轻度反𬌗趋势，颌骨仍在快速生长，主诊医生综合两位医生意见后决定先观察",
+    "observation_reason": "等待切牙替换以判断反𬌗是否持续",
+    "plan_items": ["家长记录夜间张口情况", "保持口腔卫生，控制 54 牙位白垩斑"],
+    "followup_window": { "due_date": "2026-12-20", "reason": "切牙替换期复评反𬌗趋势" },
+    "consent_event_ids": [],
+    "confirming_guardian_id": "g-0001",
+    "physician_id": "doc-ortho-07",
+    "revises_plan_id": null,
+    "revision_trigger": null,
+    "reassessment_opinion_ids": []
+  },
+  "metadata": { "site_id": "site-a", "registered_by": "nurse-03" }
+}
