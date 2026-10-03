@@ -1,0 +1,16 @@
+{
+  "urgent_dental": [
+    {
+      "child_id": "child-2022-0007",
+      "risk_id": "risk-acute-pain-001",
+      "episode_id": "ep-2026-0007",
+      "signal": "ACUTE_DENTAL_PAIN",
+      "severity": "URGENT",
+      "escalated_at": "2026-12-10T20:15:00+08:00",
+      "days_open": 0
+    }
+  ],
+  "routine_orthodontic": [],
+  "overdue_followups": [],
+  "as_of": "2026-12-10T21:00:00+08:00"
+}

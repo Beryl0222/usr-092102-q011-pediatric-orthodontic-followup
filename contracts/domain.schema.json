@@ -1,6 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pediatric-ortho-followup/contracts/domain.schema.json",
   "title": "儿童正畸生长随访领域事件",
+  "description": "v1 信封字段保持稳定；v2 新增 child_record 聚合与细粒度事件，新事件须携带 subject_id 与 payload。v1 五类事件无 payload 时仍然合法。",
   "type": "object",
   "required": [
     "event_id",
@@ -19,11 +21,26 @@
     "event_type": {
       "type": "string",
       "enum": [
+        "EPISODE_OPENED",
+        "RISK_ESCALATED",
+        "RISK_RESOLVED",
+        "FOLLOWUP_WINDOW_SCHEDULED",
+        "FOLLOWUP_COMPLETED",
+        "REFERRAL_ISSUED",
+        "CHILD_REGISTERED",
+        "GUARDIAN_LINKED",
+        "GUARDIAN_CHANGED",
+        "EVIDENCE_CAPTURED",
         "OBSERVATION_RECORDED",
         "OPINION_ISSUED",
+        "PLAN_PROPOSED",
         "PLAN_CONFIRMED",
-        "RISK_ESCALATED",
-        "FOLLOWUP_COMPLETED"
+        "PLAN_REVISED",
+        "PLAN_REASSESSED",
+        "ADVERSE_REACTION_REPORTED",
+        "COMPLIANCE_ISSUE_REPORTED",
+        "CONSENT_GRANTED",
+        "CONSENT_WITHDRAWN"
       ]
     },
     "aggregate_type": {
@@ -32,12 +49,18 @@
         "growth_episode",
         "clinical_observation",
         "care_plan",
-        "consent_scope"
+        "consent_scope",
+        "child_record"
       ]
     },
     "aggregate_id": {
       "type": "string",
       "minLength": 1
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "v2 事件必填：事件所归属的儿童档案 ID。"
     },
     "occurred_at": {
       "type": "string",
@@ -50,7 +73,395 @@
     "summary": {
       "type": "string",
       "minLength": 1
+    },
+    "payload": {
+      "type": "object"
     }
   },
-  "additionalProperties": true
+  "additionalProperties": true,
+  "$defs": {
+    "childId": { "type": "string", "minLength": 1 },
+    "purposes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["TREATMENT", "TEACHING", "RESEARCH", "CROSS_CAMPUS_CONTINUITY"]
+      }
+    },
+    "dentitionStage": {
+      "type": "string",
+      "enum": ["PRIMARY_DENTITION", "MIXED_DENTITION", "PERMANENT_DENTITION"]
+    },
+    "channel": {
+      "type": "string",
+      "enum": ["URGENT_DENTAL", "ROUTINE_ORTHODONTIC"]
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["LOW", "MODERATE", "HIGH", "URGENT"]
+    },
+    "stance": {
+      "type": "string",
+      "enum": ["OBSERVE", "INVESTIGATE", "INTERVENE", "URGENT_CARE", "REFER"]
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "event_type": { "const": "EPISODE_OPENED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "growth_episode" },
+          "payload": {
+            "required": ["child_id", "campus_id", "reason"],
+            "properties": { "child_id": { "$ref": "#/$defs/childId" } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "RISK_ESCALATED" } } },
+      "then": {
+        "allOf": [
+          { "if": { "required": ["payload"] }, "then": { "properties": { "aggregate_type": { "const": "growth_episode" } } } },
+          {
+            "properties": {
+              "payload": {
+                "properties": {
+                  "channel": { "$ref": "#/$defs/channel" },
+                  "severity": { "$ref": "#/$defs/severity" }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "RISK_RESOLVED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "growth_episode" },
+          "payload": { "required": ["child_id", "risk_id", "resolution"] }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "FOLLOWUP_WINDOW_SCHEDULED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "growth_episode" },
+          "payload": {
+            "required": ["child_id", "episode_id", "window_id", "due_from", "due_to", "reason"],
+            "properties": {
+              "reason": {
+                "type": "string",
+                "enum": [
+                  "OBSERVATION",
+                  "ROUTINE_ASSESSMENT",
+                  "CARIES_SURVEILLANCE",
+                  "POST_DEVICE_FIT",
+                  "ADVERSE_REACTION_MONITOR",
+                  "COMPLIANCE_SUPPORT"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "FOLLOWUP_COMPLETED" } } },
+      "then": {
+        "if": { "required": ["payload"] },
+        "then": { "properties": { "aggregate_type": { "const": "growth_episode" } } }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "REFERRAL_ISSUED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "growth_episode" },
+          "payload": {
+            "required": [
+              "child_id",
+              "episode_id",
+              "from_campus_id",
+              "to_campus_id",
+              "consent_ref",
+              "continuity_package",
+              "purpose_restrictions"
+            ],
+            "properties": {
+              "continuity_package": { "type": "array", "minItems": 1 },
+              "purpose_restrictions": { "$ref": "#/$defs/purposes" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "CHILD_REGISTERED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "child_record" },
+          "payload": {
+            "required": ["child_id", "birth_year_month", "registered_campus_id"],
+            "properties": { "birth_year_month": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}$" } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "GUARDIAN_LINKED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "child_record" },
+          "payload": { "required": ["child_id", "guardian_id", "relationship", "legal_basis"] }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "GUARDIAN_CHANGED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "child_record" },
+          "payload": {
+            "required": [
+              "child_id",
+              "previous_guardian_id",
+              "new_guardian_id",
+              "relationship",
+              "legal_basis",
+              "continuity_note"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "EVIDENCE_CAPTURED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "clinical_observation" },
+          "payload": {
+            "required": [
+              "child_id",
+              "episode_id",
+              "evidence_id",
+              "kind",
+              "exam_source",
+              "campus_id",
+              "captured_at",
+              "dentition_stage",
+              "permissions"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "FACIAL_PHOTO",
+                  "INTRAORAL_PHOTO",
+                  "PANORAMIC_XRAY",
+                  "CEPHALOGRAM",
+                  "STUDY_MODEL"
+                ]
+              },
+              "exam_source": {
+                "type": "string",
+                "enum": ["CAMPUS_VISIT", "SCHOOL_SCREENING", "EMERGENCY_VISIT", "CROSS_CAMPUS_REFERRAL"]
+              },
+              "dentition_stage": { "$ref": "#/$defs/dentitionStage" },
+              "permissions": {
+                "type": "object",
+                "required": ["TREATMENT"],
+                "properties": {
+                  "TREATMENT": { "type": "boolean", "const": true },
+                  "TEACHING": { "type": "boolean" },
+                  "RESEARCH": { "type": "boolean" },
+                  "CROSS_CAMPUS_CONTINUITY": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "OBSERVATION_RECORDED" } } },
+      "then": {
+        "if": { "required": ["payload"] },
+        "then": { "properties": { "aggregate_type": { "const": "clinical_observation" } } }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "OPINION_ISSUED" } } },
+      "then": {
+        "allOf": [
+          { "if": { "required": ["payload"] }, "then": { "properties": { "aggregate_type": { "const": "clinical_observation" } } } },
+          {
+            "properties": {
+              "payload": {
+                "properties": { "stance": { "$ref": "#/$defs/stance" } }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "PLAN_PROPOSED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "care_plan" },
+          "payload": {
+            "required": ["child_id", "episode_id", "plan_id", "proposal_id", "clinician_id", "items", "rationale", "evidence_refs"],
+            "properties": {
+              "items": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "required": ["item_id", "type"],
+                  "properties": {
+                    "item_id": { "type": "string", "minLength": 1 },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "OBSERVE",
+                        "HABIT_INTERCEPTION",
+                        "SPACE_MAINTAINER",
+                        "REMOVABLE_APPLIANCE",
+                        "FUNCTIONAL_APPLIANCE",
+                        "FIXED_APPLIANCE",
+                        "CARIES_TREATMENT"
+                      ]
+                    }
+                  }
+                }
+              },
+              "evidence_refs": { "type": "array", "minItems": 1, "uniqueItems": true }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "PLAN_CONFIRMED" } } },
+      "then": {
+        "if": { "required": ["payload"] },
+        "then": { "properties": { "aggregate_type": { "const": "care_plan" } } }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "PLAN_REVISED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "care_plan" },
+          "payload": {
+            "required": ["child_id", "plan_id", "revision_of", "revision_proposal_id", "reason", "changes", "window_ref", "decided_by_guardian_id", "consent_ref"],
+            "properties": {
+              "reason": {
+                "type": "string",
+                "enum": [
+                  "GROWTH_CHANGE",
+                  "NEW_EVIDENCE",
+                  "COMPLIANCE_DIFFICULTY",
+                  "ADVERSE_REACTION",
+                  "GUARDIAN_REQUEST"
+                ]
+              },
+              "changes": { "type": "object", "required": ["add", "remove", "adjust"], "minProperties": 1 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "PLAN_REASSESSED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "care_plan" },
+          "payload": {
+            "required": ["child_id", "plan_id", "window_ref", "outcome", "summary"],
+            "properties": {
+              "outcome": { "type": "string", "enum": ["CONTINUE", "REVISE", "PAUSE", "COMPLETE"] }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "ADVERSE_REACTION_REPORTED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "care_plan" },
+          "payload": {
+            "required": ["child_id", "plan_id", "device_ref", "severity", "detail"],
+            "properties": { "severity": { "$ref": "#/$defs/severity" } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "COMPLIANCE_ISSUE_REPORTED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "care_plan" },
+          "payload": { "required": ["child_id", "plan_id", "detail", "reported_by"] }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "CONSENT_GRANTED" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "consent_scope" },
+          "payload": {
+            "required": ["child_id", "guardian_id", "purposes", "granted_at"],
+            "properties": { "purposes": { "$ref": "#/$defs/purposes" } }
+          }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "event_type": { "const": "CONSENT_WITHDRAWN" } } },
+      "then": {
+        "required": ["subject_id", "payload"],
+        "properties": {
+          "aggregate_type": { "const": "consent_scope" },
+          "payload": {
+            "required": ["child_id", "guardian_id", "purposes", "scope", "future_use_only"],
+            "properties": {
+              "purposes": { "$ref": "#/$defs/purposes" },
+              "future_use_only": { "type": "boolean", "const": true },
+              "scope": {
+                "type": "object",
+                "minProperties": 1,
+                "properties": {
+                  "evidence_ids": { "type": "array", "items": { "type": "string" } },
+                  "all_capture_sources": { "type": "array" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

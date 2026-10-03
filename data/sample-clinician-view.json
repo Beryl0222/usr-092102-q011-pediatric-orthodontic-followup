@@ -1,0 +1,382 @@
+{
+  "child": {
+    "child_id": "child-2022-0007",
+    "birth_year_month": "2022-03"
+  },
+  "episodes": [
+    {
+      "episode_id": "ep-2026-0007",
+      "child_id": "child-2022-0007",
+      "opened_at": "2026-09-01T09:00:00+08:00",
+      "reason": "家长要求 4 岁即刻戴矫治器，医生需评估"
+    }
+  ],
+  "evidence_by_stage": [
+    {
+      "dentition_stage": "PRIMARY_DENTITION",
+      "label": "乳牙列期",
+      "evidence": [
+        {
+          "evidence_id": "ev-2026-09-intraoral",
+          "kind": "INTRAORAL_PHOTO",
+          "exam_source": "CAMPUS_VISIT",
+          "campus_id": "campus-east",
+          "captured_at": "2026-09-01T09:40:00+08:00",
+          "opinions": [
+            {
+              "opinion_id": "op-d1-observe",
+              "clinician_id": "clinician-D1",
+              "stance": "OBSERVE",
+              "rationale": "乳牙列期、无骨性异常与功能损害，年龄本身不构成矫治指征；3 个月后复诊比较生长变化。",
+              "issued_at": "2026-09-01T09:40:00+08:00"
+            },
+            {
+              "opinion_id": "op-d1-investigate",
+              "clinician_id": "clinician-D1",
+              "stance": "INVESTIGATE",
+              "rationale": "建议补 6 个月生长资料后再定；两意见并存，由监护人参与决定。",
+              "issued_at": "2027-06-15T09:30:00+08:00"
+            }
+          ],
+          "usable_for": {
+            "TREATMENT": true,
+            "TEACHING": true,
+            "RESEARCH": false,
+            "CROSS_CAMPUS_CONTINUITY": true
+          }
+        },
+        {
+          "evidence_id": "ev-2026-09-facial",
+          "kind": "FACIAL_PHOTO",
+          "exam_source": "CAMPUS_VISIT",
+          "campus_id": "campus-east",
+          "captured_at": "2026-09-01T09:40:00+08:00",
+          "opinions": [
+            {
+              "opinion_id": "op-d1-observe",
+              "clinician_id": "clinician-D1",
+              "stance": "OBSERVE",
+              "rationale": "乳牙列期、无骨性异常与功能损害，年龄本身不构成矫治指征；3 个月后复诊比较生长变化。",
+              "issued_at": "2026-09-01T09:40:00+08:00"
+            }
+          ],
+          "usable_for": {
+            "TREATMENT": true,
+            "TEACHING": true,
+            "RESEARCH": true,
+            "CROSS_CAMPUS_CONTINUITY": true
+          }
+        },
+        {
+          "evidence_id": "ev-2026-12-emergency",
+          "kind": "INTRAORAL_PHOTO",
+          "exam_source": "EMERGENCY_VISIT",
+          "campus_id": "campus-east",
+          "captured_at": "2026-12-11T10:05:00+08:00",
+          "opinions": [],
+          "usable_for": {
+            "TREATMENT": true,
+            "TEACHING": true,
+            "RESEARCH": true,
+            "CROSS_CAMPUS_CONTINUITY": true
+          }
+        }
+      ]
+    },
+    {
+      "dentition_stage": "MIXED_DENTITION",
+      "label": "混合牙列期",
+      "evidence": [
+        {
+          "evidence_id": "ev-2027-06-ceph",
+          "kind": "CEPHALOGRAM",
+          "exam_source": "CAMPUS_VISIT",
+          "campus_id": "campus-east",
+          "captured_at": "2027-06-15T09:30:00+08:00",
+          "opinions": [
+            {
+              "opinion_id": "op-d3-intervene",
+              "clinician_id": "clinician-D3",
+              "stance": "INTERVENE",
+              "rationale": "生长高峰前期、下颌后缩，建议功能矫治器引导颌骨生长。",
+              "issued_at": "2027-06-15T09:30:00+08:00"
+            },
+            {
+              "opinion_id": "op-d1-investigate",
+              "clinician_id": "clinician-D1",
+              "stance": "INVESTIGATE",
+              "rationale": "建议补 6 个月生长资料后再定；两意见并存，由监护人参与决定。",
+              "issued_at": "2027-06-15T09:30:00+08:00"
+            }
+          ],
+          "usable_for": {
+            "TREATMENT": true,
+            "TEACHING": true,
+            "RESEARCH": true,
+            "CROSS_CAMPUS_CONTINUITY": true
+          }
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "kind": "observation",
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "dentition_stage": "PRIMARY_DENTITION",
+      "findings": [
+        {
+          "category": "CARIES",
+          "present": false,
+          "detail": "未见明显龋坏，建议保持涂氟"
+        },
+        {
+          "category": "ORAL_HABIT",
+          "present": true,
+          "detail": "夜间安抚剂依赖，无明显腭盖高拱"
+        },
+        {
+          "category": "MOUTH_BREATHING",
+          "present": false,
+          "detail": "鼻通气可，张口呼吸阴性"
+        },
+        {
+          "category": "SKELETAL",
+          "present": false,
+          "detail": "侧貌协调，未见骨性 III 类或下颌偏斜"
+        }
+      ],
+      "observer_id": "clinician-D1",
+      "campus_id": "campus-east",
+      "recorded_at": "2026-09-01T09:40:00+08:00"
+    },
+    {
+      "kind": "observation",
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "dentition_stage": "PRIMARY_DENTITION",
+      "findings": [
+        {
+          "category": "CARIES",
+          "present": true,
+          "detail": "85 深龋近髓，叩诊轻度不适"
+        }
+      ],
+      "observer_id": "clinician-D2",
+      "campus_id": "campus-east",
+      "recorded_at": "2026-12-11T10:05:00+08:00"
+    },
+    {
+      "kind": "observation",
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "dentition_stage": "MIXED_DENTITION",
+      "findings": [
+        {
+          "category": "OCCLUSAL",
+          "present": true,
+          "detail": "双侧第一恒磨牙远中关系，前牙深覆合 II°"
+        },
+        {
+          "category": "SKELETAL",
+          "present": true,
+          "detail": "下颌后缩趋势，ANB 增大"
+        }
+      ],
+      "observer_id": "clinician-D3",
+      "campus_id": "campus-east",
+      "recorded_at": "2027-06-15T09:30:00+08:00"
+    }
+  ],
+  "plans": [
+    {
+      "plan_id": "plan-0007",
+      "episode_id": "ep-2026-0007",
+      "proposed_at": "2026-09-01T09:40:00+08:00",
+      "confirmed_at": "2026-09-01T09:40:00+08:00",
+      "initial": {
+        "proposal_id": "proposal-initial",
+        "rationale": "现有证据不支持即刻矫治；持续观察可在混合牙列早期及时介入。",
+        "items": [
+          {
+            "item_id": "item-functional",
+            "type": "FUNCTIONAL_APPLIANCE"
+          }
+        ]
+      },
+      "revisions": [
+        {
+          "at": "2027-06-15T09:30:00+08:00",
+          "reason": "GROWTH_CHANGE",
+          "revision_of": "proposal-initial",
+          "added": [
+            "item-functional"
+          ],
+          "removed": [
+            "item-observe"
+          ],
+          "adjusted": [],
+          "evidence_refs": [
+            "ev-2027-06-ceph"
+          ]
+        },
+        {
+          "at": "2027-09-05T10:00:00+08:00",
+          "reason": "ADVERSE_REACTION",
+          "revision_of": "proposal-growth-revision",
+          "added": [],
+          "removed": [],
+          "adjusted": [
+            "item-functional"
+          ],
+          "evidence_refs": []
+        }
+      ],
+      "current_items": [
+        {
+          "item_id": "item-functional",
+          "type": "FUNCTIONAL_APPLIANCE",
+          "note": "调磨下颌翼缘；前 2 周仅夜间佩戴 6 小时，适应后恢复"
+        }
+      ],
+      "reassessments": [
+        {
+          "at": "2027-09-05T10:00:00+08:00",
+          "window_ref": "win-2027-09",
+          "outcome": "REVISE",
+          "summary": "压疮与翼缘形态、佩戴时长有关，建议调磨器械并缩短过渡时长后复评。"
+        },
+        {
+          "at": "2027-09-24T10:00:00+08:00",
+          "window_ref": "win-2027-09-adjust",
+          "outcome": "CONTINUE",
+          "summary": "压疮愈合，佩戴适应，按功能矫治方案继续。"
+        }
+      ],
+      "adverse_reactions": [
+        {
+          "child_id": "child-2022-0007",
+          "plan_id": "plan-0007",
+          "device_ref": "item-functional",
+          "severity": "MODERATE",
+          "detail": "下颌翼缘黏膜压疮，进食疼痛",
+          "at": "2027-09-05T10:00:00+08:00"
+        }
+      ],
+      "compliance_issues": []
+    }
+  ],
+  "risks": [
+    {
+      "risk_id": "risk-acute-pain-001",
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "signal": "ACUTE_DENTAL_PAIN",
+      "channel": "URGENT_DENTAL",
+      "severity": "URGENT",
+      "detail": "右下后牙夜间痛、冷刺激痛，需急诊处理",
+      "escalated_at": "2026-12-10T20:15:00+08:00",
+      "active": false,
+      "resolved_at": "2026-12-11T10:05:00+08:00",
+      "resolution": "牙髓切断术 + 预成冠，疼痛解除；急诊通道关闭"
+    }
+  ],
+  "referrals": [
+    {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "from_campus_id": "campus-east",
+      "to_campus_id": "campus-west",
+      "consent_ref": "evt-consent-initial",
+      "continuity_package": [
+        "ev-2026-09-intraoral",
+        "ev-2027-06-ceph"
+      ],
+      "purpose_restrictions": [
+        "TREATMENT",
+        "CROSS_CAMPUS_CONTINUITY"
+      ],
+      "issued_at": "2027-10-05T09:00:00+08:00",
+      "event_id": "evt-referral"
+    }
+  ],
+  "consent_ledger": {
+    "grants": [
+      {
+        "event_id": "evt-consent-initial",
+        "guardian_id": "guardian-1001",
+        "purposes": [
+          "TREATMENT",
+          "TEACHING",
+          "RESEARCH",
+          "CROSS_CAMPUS_CONTINUITY"
+        ],
+        "granted_at": "2026-09-01T09:20:00+08:00"
+      },
+      {
+        "event_id": "evt-consent-revision",
+        "guardian_id": "guardian-1001",
+        "purposes": [
+          "TREATMENT"
+        ],
+        "granted_at": "2027-06-15T09:30:00+08:00"
+      },
+      {
+        "event_id": "evt-consent-adjust",
+        "guardian_id": "guardian-1001",
+        "purposes": [
+          "TREATMENT"
+        ],
+        "granted_at": "2027-09-05T10:00:00+08:00"
+      }
+    ],
+    "withdrawals": [
+      {
+        "event_id": "evt-consent-research-withdrawn",
+        "guardian_id": "guardian-1002",
+        "purposes": [
+          "RESEARCH"
+        ],
+        "scope": {
+          "evidence_ids": [
+            "ev-2026-09-intraoral"
+          ]
+        },
+        "at": "2027-10-02T15:00:00+08:00"
+      }
+    ]
+  },
+  "usable_evidence": {
+    "TREATMENT": [
+      "ev-2026-09-intraoral",
+      "ev-2026-09-facial",
+      "ev-2026-12-emergency",
+      "ev-2027-06-ceph"
+    ],
+    "TEACHING": [
+      "ev-2026-09-intraoral",
+      "ev-2026-09-facial",
+      "ev-2026-12-emergency",
+      "ev-2027-06-ceph"
+    ],
+    "RESEARCH": [
+      "ev-2026-09-facial",
+      "ev-2026-12-emergency",
+      "ev-2027-06-ceph"
+    ],
+    "CROSS_CAMPUS_CONTINUITY": [
+      "ev-2026-09-intraoral",
+      "ev-2026-09-facial",
+      "ev-2026-12-emergency",
+      "ev-2027-06-ceph"
+    ]
+  },
+  "purpose_labels": {
+    "TREATMENT": "诊疗",
+    "TEACHING": "教学",
+    "RESEARCH": "科研",
+    "CROSS_CAMPUS_CONTINUITY": "跨院连续"
+  },
+  "as_of": "2027-10-06T10:00:00+08:00"
+}

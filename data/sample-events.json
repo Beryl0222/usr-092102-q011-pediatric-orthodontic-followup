@@ -1,0 +1,749 @@
+[
+  {
+    "event_id": "evt-child-registered",
+    "event_type": "CHILD_REGISTERED",
+    "aggregate_type": "child_record",
+    "aggregate_id": "child:child-2022-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:00:00+08:00",
+    "version": 1,
+    "summary": "建档：4 岁 6 个月儿童首次正畸咨询",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "birth_year_month": "2022-03",
+      "registered_campus_id": "campus-east"
+    }
+  },
+  {
+    "event_id": "evt-guardian-a-linked",
+    "event_type": "GUARDIAN_LINKED",
+    "aggregate_type": "child_record",
+    "aggregate_id": "child:child-2022-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:00:00+08:00",
+    "version": 2,
+    "summary": "登记监护人 A",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "guardian_id": "guardian-1001",
+      "relationship": "PARENT",
+      "legal_basis": "户口登记"
+    }
+  },
+  {
+    "event_id": "evt-episode-opened",
+    "event_type": "EPISODE_OPENED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:00:00+08:00",
+    "version": 1,
+    "summary": "开启生长随访主线",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "campus_id": "campus-east",
+      "reason": "家长要求 4 岁即刻戴矫治器，医生需评估"
+    }
+  },
+  {
+    "event_id": "evt-consent-initial",
+    "event_type": "CONSENT_GRANTED",
+    "aggregate_type": "consent_scope",
+    "aggregate_id": "consent:child-2022-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:20:00+08:00",
+    "version": 1,
+    "summary": "监护人 A 授予诊疗/教学/科研/跨院连续用途",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "guardian_id": "guardian-1001",
+      "purposes": [
+        "TREATMENT",
+        "TEACHING",
+        "RESEARCH",
+        "CROSS_CAMPUS_CONTINUITY"
+      ],
+      "granted_at": "2026-09-01T09:20:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-ev-intraoral",
+    "event_type": "EVIDENCE_CAPTURED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:40:00+08:00",
+    "version": 1,
+    "summary": "初诊口内照（全用途授权）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "evidence_id": "ev-2026-09-intraoral",
+      "kind": "INTRAORAL_PHOTO",
+      "exam_source": "CAMPUS_VISIT",
+      "campus_id": "campus-east",
+      "captured_at": "2026-09-01T09:40:00+08:00",
+      "dentition_stage": "PRIMARY_DENTITION",
+      "permissions": {
+        "TREATMENT": true,
+        "TEACHING": true,
+        "RESEARCH": true,
+        "CROSS_CAMPUS_CONTINUITY": true
+      }
+    }
+  },
+  {
+    "event_id": "evt-ev-facial",
+    "event_type": "EVIDENCE_CAPTURED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:40:00+08:00",
+    "version": 2,
+    "summary": "初诊面像（仅诊疗/教学）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "evidence_id": "ev-2026-09-facial",
+      "kind": "FACIAL_PHOTO",
+      "exam_source": "CAMPUS_VISIT",
+      "campus_id": "campus-east",
+      "captured_at": "2026-09-01T09:40:00+08:00",
+      "dentition_stage": "PRIMARY_DENTITION",
+      "permissions": {
+        "TREATMENT": true,
+        "TEACHING": true,
+        "RESEARCH": false,
+        "CROSS_CAMPUS_CONTINUITY": false
+      }
+    }
+  },
+  {
+    "event_id": "evt-obs-initial",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:40:00+08:00",
+    "version": 3,
+    "summary": "初诊观察：无骨性异常信号",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "dentition_stage": "PRIMARY_DENTITION",
+      "findings": [
+        {
+          "category": "CARIES",
+          "present": false,
+          "detail": "未见明显龋坏，建议保持涂氟"
+        },
+        {
+          "category": "ORAL_HABIT",
+          "present": true,
+          "detail": "夜间安抚剂依赖，无明显腭盖高拱"
+        },
+        {
+          "category": "MOUTH_BREATHING",
+          "present": false,
+          "detail": "鼻通气可，张口呼吸阴性"
+        },
+        {
+          "category": "SKELETAL",
+          "present": false,
+          "detail": "侧貌协调，未见骨性 III 类或下颌偏斜"
+        }
+      ],
+      "observer_id": "clinician-D1",
+      "campus_id": "campus-east"
+    }
+  },
+  {
+    "event_id": "evt-op-observe",
+    "event_type": "OPINION_ISSUED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:40:00+08:00",
+    "version": 4,
+    "summary": "医生意见：先观察并明确复诊节点",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "opinion_id": "op-d1-observe",
+      "evidence_refs": [
+        "ev-2026-09-intraoral",
+        "ev-2026-09-facial"
+      ],
+      "clinician_id": "clinician-D1",
+      "stance": "OBSERVE",
+      "rationale": "乳牙列期、无骨性异常与功能损害，年龄本身不构成矫治指征；3 个月后复诊比较生长变化。"
+    }
+  },
+  {
+    "event_id": "evt-plan-proposed",
+    "event_type": "PLAN_PROPOSED",
+    "aggregate_type": "care_plan",
+    "aggregate_id": "plan:plan-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:40:00+08:00",
+    "version": 1,
+    "summary": "提出观察方案（非按年龄自动生成）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "plan_id": "plan-0007",
+      "proposal_id": "proposal-initial",
+      "clinician_id": "clinician-D1",
+      "items": [
+        {
+          "item_id": "item-observe",
+          "type": "OBSERVE",
+          "note": "观察替牙进程与口呼吸/习惯变化，安排 3 个月复诊窗"
+        }
+      ],
+      "rationale": "现有证据不支持即刻矫治；持续观察可在混合牙列早期及时介入。",
+      "evidence_refs": [
+        "ev-2026-09-intraoral",
+        "ev-2026-09-facial"
+      ]
+    }
+  },
+  {
+    "event_id": "evt-win-observe",
+    "event_type": "FOLLOWUP_WINDOW_SCHEDULED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:40:00+08:00",
+    "version": 2,
+    "summary": "排定 3 个月观察复诊窗",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "window_id": "win-2026-12",
+      "due_from": "2026-12-01",
+      "due_to": "2026-12-15",
+      "reason": "OBSERVATION"
+    }
+  },
+  {
+    "event_id": "evt-plan-confirmed",
+    "event_type": "PLAN_CONFIRMED",
+    "aggregate_type": "care_plan",
+    "aggregate_id": "plan:plan-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-09-01T09:40:00+08:00",
+    "version": 2,
+    "summary": "监护人 A 知情确认观察方案与复诊安排",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "plan_id": "plan-0007",
+      "proposal_id": "proposal-initial",
+      "consent_ref": "evt-consent-initial",
+      "window_ref": "win-2026-12",
+      "decided_by_guardian_id": "guardian-1001"
+    }
+  },
+  {
+    "event_id": "evt-risk-escalated",
+    "event_type": "RISK_ESCALATED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-12-10T20:15:00+08:00",
+    "version": 3,
+    "summary": "急性牙痛 -> URGENT_DENTAL 升级",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "risk_id": "risk-acute-pain-001",
+      "signal": "ACUTE_DENTAL_PAIN",
+      "channel": "URGENT_DENTAL",
+      "severity": "URGENT",
+      "detail": "右下后牙夜间痛、冷刺激痛，需急诊处理"
+    }
+  },
+  {
+    "event_id": "evt-ev-emergency",
+    "event_type": "EVIDENCE_CAPTURED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-12-11T10:05:00+08:00",
+    "version": 5,
+    "summary": "急诊口内照（仅诊疗用途）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "evidence_id": "ev-2026-12-emergency",
+      "kind": "INTRAORAL_PHOTO",
+      "exam_source": "EMERGENCY_VISIT",
+      "campus_id": "campus-east",
+      "captured_at": "2026-12-11T10:05:00+08:00",
+      "dentition_stage": "PRIMARY_DENTITION",
+      "permissions": {
+        "TREATMENT": true
+      }
+    }
+  },
+  {
+    "event_id": "evt-obs-emergency",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-12-11T10:05:00+08:00",
+    "version": 6,
+    "summary": "急诊观察：85 深龋",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "dentition_stage": "PRIMARY_DENTITION",
+      "findings": [
+        {
+          "category": "CARIES",
+          "present": true,
+          "detail": "85 深龋近髓，叩诊轻度不适"
+        }
+      ],
+      "observer_id": "clinician-D2",
+      "campus_id": "campus-east"
+    }
+  },
+  {
+    "event_id": "evt-risk-resolved",
+    "event_type": "RISK_RESOLVED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-12-11T10:05:00+08:00",
+    "version": 4,
+    "summary": "龋病急症处理后关闭风险",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "risk_id": "risk-acute-pain-001",
+      "resolution": "牙髓切断术 + 预成冠，疼痛解除；急诊通道关闭"
+    }
+  },
+  {
+    "event_id": "evt-win-observe-done",
+    "event_type": "FOLLOWUP_COMPLETED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2026-12-11T10:05:00+08:00",
+    "version": 5,
+    "summary": "观察窗复诊完成（与急诊同期）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "window_ref": "win-2026-12",
+      "completed_at": "2026-12-11T10:05:00+08:00",
+      "outcome": "KEPT"
+    }
+  },
+  {
+    "event_id": "evt-ev-ceph",
+    "event_type": "EVIDENCE_CAPTURED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-06-15T09:30:00+08:00",
+    "version": 7,
+    "summary": "混合牙列期头影测量",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "evidence_id": "ev-2027-06-ceph",
+      "kind": "CEPHALOGRAM",
+      "exam_source": "CAMPUS_VISIT",
+      "campus_id": "campus-east",
+      "captured_at": "2027-06-15T09:30:00+08:00",
+      "dentition_stage": "MIXED_DENTITION",
+      "permissions": {
+        "TREATMENT": true,
+        "CROSS_CAMPUS_CONTINUITY": true
+      }
+    }
+  },
+  {
+    "event_id": "evt-obs-mixed",
+    "event_type": "OBSERVATION_RECORDED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-06-15T09:30:00+08:00",
+    "version": 8,
+    "summary": "混合牙列期观察：II 类趋势",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "dentition_stage": "MIXED_DENTITION",
+      "findings": [
+        {
+          "category": "OCCLUSAL",
+          "present": true,
+          "detail": "双侧第一恒磨牙远中关系，前牙深覆合 II°"
+        },
+        {
+          "category": "SKELETAL",
+          "present": true,
+          "detail": "下颌后缩趋势，ANB 增大"
+        }
+      ],
+      "observer_id": "clinician-D3",
+      "campus_id": "campus-east"
+    }
+  },
+  {
+    "event_id": "evt-op-intervene",
+    "event_type": "OPINION_ISSUED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-06-15T09:30:00+08:00",
+    "version": 9,
+    "summary": "医生 D3：建议介入",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "opinion_id": "op-d3-intervene",
+      "evidence_refs": [
+        "ev-2027-06-ceph"
+      ],
+      "clinician_id": "clinician-D3",
+      "stance": "INTERVENE",
+      "rationale": "生长高峰前期、下颌后缩，建议功能矫治器引导颌骨生长。"
+    }
+  },
+  {
+    "event_id": "evt-op-investigate",
+    "event_type": "OPINION_ISSUED",
+    "aggregate_type": "clinical_observation",
+    "aggregate_id": "clinical:ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-06-15T09:30:00+08:00",
+    "version": 10,
+    "summary": "医生 D1：建议再观察（意见并存，不覆盖 D3）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "opinion_id": "op-d1-investigate",
+      "evidence_refs": [
+        "ev-2027-06-ceph",
+        "ev-2026-09-intraoral"
+      ],
+      "clinician_id": "clinician-D1",
+      "stance": "INVESTIGATE",
+      "rationale": "建议补 6 个月生长资料后再定；两意见并存，由监护人参与决定。"
+    }
+  },
+  {
+    "event_id": "evt-consent-revision",
+    "event_type": "CONSENT_GRANTED",
+    "aggregate_type": "consent_scope",
+    "aggregate_id": "consent:child-2022-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-06-15T09:30:00+08:00",
+    "version": 2,
+    "summary": "修订前再次知情同意（治疗用途）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "guardian_id": "guardian-1001",
+      "purposes": [
+        "TREATMENT"
+      ],
+      "granted_at": "2027-06-15T09:30:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-win-postfit",
+    "event_type": "FOLLOWUP_WINDOW_SCHEDULED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-06-15T09:30:00+08:00",
+    "version": 6,
+    "summary": "排定戴牙后复诊窗",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "window_id": "win-2027-09",
+      "due_from": "2027-09-01",
+      "due_to": "2027-09-15",
+      "reason": "POST_DEVICE_FIT"
+    }
+  },
+  {
+    "event_id": "evt-plan-revised",
+    "event_type": "PLAN_REVISED",
+    "aggregate_type": "care_plan",
+    "aggregate_id": "plan:plan-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-06-15T09:30:00+08:00",
+    "version": 3,
+    "summary": "基于生长变化修订为功能矫治（原观察判断保留）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "plan_id": "plan-0007",
+      "revision_of": "proposal-initial",
+      "revision_proposal_id": "proposal-growth-revision",
+      "reason": "GROWTH_CHANGE",
+      "changes": {
+        "add": [
+          {
+            "item_id": "item-functional",
+            "type": "FUNCTIONAL_APPLIANCE",
+            "note": "Twin-block 夜间佩戴，逐月加量"
+          }
+        ],
+        "remove": [
+          "item-observe"
+        ],
+        "adjust": []
+      },
+      "evidence_refs": [
+        "ev-2027-06-ceph"
+      ],
+      "window_ref": "win-2027-09",
+      "decided_by_guardian_id": "guardian-1001",
+      "consent_ref": "evt-consent-revision"
+    }
+  },
+  {
+    "event_id": "evt-adverse",
+    "event_type": "ADVERSE_REACTION_REPORTED",
+    "aggregate_type": "care_plan",
+    "aggregate_id": "plan:plan-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-05T10:00:00+08:00",
+    "version": 4,
+    "summary": "器械不良反应：黏膜压疮",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "plan_id": "plan-0007",
+      "device_ref": "item-functional",
+      "severity": "MODERATE",
+      "detail": "下颌翼缘黏膜压疮，进食疼痛"
+    }
+  },
+  {
+    "event_id": "evt-win-postfit-done",
+    "event_type": "FOLLOWUP_COMPLETED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-05T10:00:00+08:00",
+    "version": 7,
+    "summary": "戴牙后复诊窗完成",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "window_ref": "win-2027-09",
+      "completed_at": "2027-09-05T10:00:00+08:00",
+      "outcome": "KEPT"
+    }
+  },
+  {
+    "event_id": "evt-plan-reassessed",
+    "event_type": "PLAN_REASSESSED",
+    "aggregate_type": "care_plan",
+    "aggregate_id": "plan:plan-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-05T10:00:00+08:00",
+    "version": 5,
+    "summary": "复评结论：REVISE（原修订判断保留，另开修订）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "plan_id": "plan-0007",
+      "window_ref": "win-2027-09",
+      "outcome": "REVISE",
+      "summary": "压疮与翼缘形态、佩戴时长有关，建议调磨器械并缩短过渡时长后复评。"
+    }
+  },
+  {
+    "event_id": "evt-consent-adjust",
+    "event_type": "CONSENT_GRANTED",
+    "aggregate_type": "consent_scope",
+    "aggregate_id": "consent:child-2022-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-05T10:00:00+08:00",
+    "version": 3,
+    "summary": "调磨修订前知情同意",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "guardian_id": "guardian-1001",
+      "purposes": [
+        "TREATMENT"
+      ],
+      "granted_at": "2027-09-05T10:00:00+08:00"
+    }
+  },
+  {
+    "event_id": "evt-win-adjust",
+    "event_type": "FOLLOWUP_WINDOW_SCHEDULED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-05T10:00:00+08:00",
+    "version": 8,
+    "summary": "排定不良反应监测窗",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "window_id": "win-2027-09-adjust",
+      "due_from": "2027-09-19",
+      "due_to": "2027-09-30",
+      "reason": "ADVERSE_REACTION_MONITOR"
+    }
+  },
+  {
+    "event_id": "evt-plan-revised-adjust",
+    "event_type": "PLAN_REVISED",
+    "aggregate_type": "care_plan",
+    "aggregate_id": "plan:plan-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-05T10:00:00+08:00",
+    "version": 6,
+    "summary": "因不良反应修订：调磨+过渡佩戴（不覆盖原修订）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "plan_id": "plan-0007",
+      "revision_of": "proposal-growth-revision",
+      "revision_proposal_id": "proposal-adverse-adjust",
+      "reason": "ADVERSE_REACTION",
+      "changes": {
+        "add": [],
+        "remove": [],
+        "adjust": [
+          {
+            "item_id": "item-functional",
+            "note": "调磨下颌翼缘；前 2 周仅夜间佩戴 6 小时，适应后恢复"
+          }
+        ]
+      },
+      "window_ref": "win-2027-09-adjust",
+      "decided_by_guardian_id": "guardian-1001",
+      "consent_ref": "evt-consent-adjust"
+    }
+  },
+  {
+    "event_id": "evt-win-adjust-done",
+    "event_type": "FOLLOWUP_COMPLETED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-24T10:00:00+08:00",
+    "version": 9,
+    "summary": "不良反应监测窗完成",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "window_ref": "win-2027-09-adjust",
+      "completed_at": "2027-09-24T10:00:00+08:00",
+      "outcome": "KEPT"
+    }
+  },
+  {
+    "event_id": "evt-plan-reassessed-continue",
+    "event_type": "PLAN_REASSESSED",
+    "aggregate_type": "care_plan",
+    "aggregate_id": "plan:plan-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-24T10:00:00+08:00",
+    "version": 7,
+    "summary": "复评结论：CONTINUE",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "plan_id": "plan-0007",
+      "window_ref": "win-2027-09-adjust",
+      "outcome": "CONTINUE",
+      "summary": "压疮愈合，佩戴适应，按功能矫治方案继续。"
+    }
+  },
+  {
+    "event_id": "evt-win-routine",
+    "event_type": "FOLLOWUP_WINDOW_SCHEDULED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-09-24T10:00:00+08:00",
+    "version": 10,
+    "summary": "排定常规评估窗（保证始终有下一节点）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "window_id": "win-2027-12-routine",
+      "due_from": "2027-12-10",
+      "due_to": "2027-12-24",
+      "reason": "ROUTINE_ASSESSMENT"
+    }
+  },
+  {
+    "event_id": "evt-guardian-changed",
+    "event_type": "GUARDIAN_CHANGED",
+    "aggregate_type": "child_record",
+    "aggregate_id": "child:child-2022-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-10-01T11:00:00+08:00",
+    "version": 3,
+    "summary": "监护人 A -> B，保留连续性说明",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "previous_guardian_id": "guardian-1001",
+      "new_guardian_id": "guardian-1002",
+      "relationship": "PARENT",
+      "legal_basis": "监护权变更公证书",
+      "continuity_note": "向新监护人完整交付既有方案、证据与授权台账；临床连续，既往授权继续有效至被明确撤回。"
+    }
+  },
+  {
+    "event_id": "evt-consent-research-withdrawn",
+    "event_type": "CONSENT_WITHDRAWN",
+    "aggregate_type": "consent_scope",
+    "aggregate_id": "consent:child-2022-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-10-02T15:00:00+08:00",
+    "version": 4,
+    "summary": "新监护人撤回初诊口内照的科研用途（仅未来用途）",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "guardian_id": "guardian-1002",
+      "purposes": [
+        "RESEARCH"
+      ],
+      "scope": {
+        "evidence_ids": [
+          "ev-2026-09-intraoral"
+        ]
+      },
+      "future_use_only": true
+    }
+  },
+  {
+    "event_id": "evt-referral",
+    "event_type": "REFERRAL_ISSUED",
+    "aggregate_type": "growth_episode",
+    "aggregate_id": "ep-2026-0007",
+    "subject_id": "child-2022-0007",
+    "occurred_at": "2027-10-05T09:00:00+08:00",
+    "version": 11,
+    "summary": "跨院转诊：仅携带授权资料，用途受限",
+    "payload": {
+      "child_id": "child-2022-0007",
+      "episode_id": "ep-2026-0007",
+      "from_campus_id": "campus-east",
+      "to_campus_id": "campus-west",
+      "consent_ref": "evt-consent-initial",
+      "continuity_package": [
+        "ev-2026-09-intraoral",
+        "ev-2027-06-ceph"
+      ],
+      "purpose_restrictions": [
+        "TREATMENT",
+        "CROSS_CAMPUS_CONTINUITY"
+      ]
+    }
+  }
+]

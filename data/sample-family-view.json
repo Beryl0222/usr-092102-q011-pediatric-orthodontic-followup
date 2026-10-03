@@ -1,0 +1,43 @@
+{
+  "child": {
+    "child_id": "child-2022-0007",
+    "birth_year_month": "2022-03",
+    "current_guardian_id": "guardian-1002"
+  },
+  "current_plan": {
+    "plan_id": "plan-0007",
+    "status": "ACTIVE_TREATMENT",
+    "confirmed_at": "2026-09-01T09:40:00+08:00",
+    "items": [
+      {
+        "item_id": "item-functional",
+        "type": "FUNCTIONAL_APPLIANCE",
+        "note": "调磨下颌翼缘；前 2 周仅夜间佩戴 6 小时，适应后恢复"
+      }
+    ],
+    "rationale": "现有证据不支持即刻矫治；持续观察可在混合牙列早期及时介入。",
+    "latest_revision": {
+      "reason": "ADVERSE_REACTION",
+      "at": "2027-09-05T10:00:00+08:00"
+    },
+    "latest_reassessment": {
+      "outcome": "CONTINUE",
+      "summary": "压疮愈合，佩戴适应，按功能矫治方案继续。",
+      "at": "2027-09-24T10:00:00+08:00"
+    }
+  },
+  "observation_reasons": [
+    "修订（发育变化）：Twin-block 夜间佩戴，逐月加量",
+    "修订（器械不良反应）：调磨下颌翼缘；前 2 周仅夜间佩戴 6 小时，适应后恢复",
+    "建议补 6 个月生长资料后再定；两意见并存，由监护人参与决定。"
+  ],
+  "next_milestone": {
+    "window_id": "win-2027-12-routine",
+    "due_from": "2027-12-10",
+    "due_to": "2027-12-24",
+    "reason": "ROUTINE_ASSESSMENT",
+    "overdue": false
+  },
+  "active_risks": [],
+  "as_of": "2027-10-06T10:00:00+08:00"
+}
